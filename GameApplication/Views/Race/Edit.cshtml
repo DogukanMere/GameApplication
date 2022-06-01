@@ -1,0 +1,24 @@
+﻿@model GameApplication.Models.RaceDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Race</h2>
+<form action="/Race/Update/@Model.RaceID" method="POST">
+    <div style="display:none;"> 
+        <input type="text" name="RaceID" value="@Model.RaceID" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="RaceName" value="@Model.RaceName" />
+    </div>
+    <div>
+        <label>Offensive:</label>
+        <input type="checkbox" name="RaceOffensive" value="true"
+               @(Model.RaceOffensive ? "checked" : "") />
+    </div>
+    <div>
+        <input type="submit" value="Update Race" />
+
+    </div>
+</form>

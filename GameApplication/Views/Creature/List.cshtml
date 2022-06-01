@@ -1,0 +1,13 @@
+﻿@model IEnumerable<GameApplication.Models.CreatureDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Creature/New">New Creature</a>
+@foreach (var creature in Model)
+{
+    <h2><a href="/Creature/Details/@creature.CreatureID">@creature.CreatureName</a></h2>
+    <div>Power: @creature.CreaturePower kg</div>
+    <div>Race: @creature.RaceName</div>
+}

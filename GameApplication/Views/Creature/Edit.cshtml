@@ -1,0 +1,38 @@
+﻿@model GameApplication.Models.ViewModels.UpdateCreature
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Creature</h2>
+<form action="/Creature/Update/@Model.SelectedCreature.CreatureID" method="POST">
+    <div style="display:none;">
+        <input type="text" name="CreatureID" value="@Model.SelectedCreature.CreatureID" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="CreatureName" value="@Model.SelectedCreature.CreatureName" />
+    </div>
+    <div>
+        <label>Power:</label> <input type="number" name="CreaturePower" value="@Model.SelectedCreature.CreaturePower" />
+    </div>
+    <div>
+        <label>Race ID:</label>
+
+        <select name="RaceID">
+            @foreach (var race in Model.RaceOptions)
+            {
+                string selected = "";
+                if (race.RaceID == Model.SelectedCreature.RaceID)
+                {
+                    selected = "selected";
+                }
+                <option value="@race.RaceID" @selected>@race.RaceName</option>
+
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Update Creature" />
+
+    </div>
+</form>

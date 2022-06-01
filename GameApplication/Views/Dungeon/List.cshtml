@@ -1,0 +1,11 @@
+﻿@model IEnumerable<GameApplication.Models.DungeonDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Dungeon/New">New Dungeon</a>
+@foreach (var Dungeon in Model)
+{
+    <h2><a href="/Dungeon/Details/@Dungeon.DungeonID">@Dungeon.DungeonName, @Dungeon.DungeonLocation</a></h2>
+}

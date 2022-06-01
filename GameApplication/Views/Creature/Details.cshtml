@@ -1,0 +1,37 @@
+﻿@model GameApplication.Models.ViewModels.DetailsCreature
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Creature/List">Go back to list</a>
+<br />
+<a href="/Creature/Edit/@Model.SelectedCreature.CreatureID">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Creature/DeleteConfirm/@Model.SelectedCreature.CreatureID">Delete</a>
+<h2>@Model.SelectedCreature.CreatureName</h2>
+<div>power: @Model.SelectedCreature.CreaturePower</div>
+<div>race: @Model.SelectedCreature.RaceName</div>
+
+<div>
+    <h2>Dungeons having @Model.SelectedCreature.CreatureName:</h2>
+    @foreach (var dungeon in Model.LiveinDungeons)
+    {
+
+        <a href="/Dungeon/Details/@dungeon.DungeonID">@dungeon.DungeonName @dungeon.DungeonLocation</a> <a style="color:#ab2020;" href="/Creature/Unassociate/@Model.SelectedCreature.CreatureID?DungeonID=@dungeon.DungeonID">[x]</a><br />
+    }
+
+    <div>
+        <h4>Add new Dungeon to include @Model.SelectedCreature.CreatureName</h4>
+        <form method="POST" action="/Creature/Associate/@Model.SelectedCreature.CreatureID">
+            <select name="DungeonID">
+                @foreach (var dungeon in Model.AvailableDungeons)
+                {
+                    <option value="@dungeon.DungeonID">@dungeon.DungeonName @dungeon.DungeonLocation</option>
+                }
+
+            </select>
+            <input type="submit" value="Associate dungeon" />
+        </form>
+    </div>
+
+</div>

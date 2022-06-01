@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Dungeon</h2>
+<form action="/Dungeon/Create" method="POST">
+    <div>
+        <label>Dungeon Name:</label> <input type="text" name="DungeonName" />
+    </div>
+    <div>
+        <label>Dungeon Location:</label> <input type="text" name="DungeonLocation" />
+    </div>
+    <div>
+        <input type="submit" value="Create Dungeon" />
+
+    </div>
+</form>

@@ -1,0 +1,23 @@
+﻿@model GameApplication.Models.DungeonDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Dungeon</h2>
+<form action="/Dungeon/Update/@Model.DungeonID" method="POST">
+    <div style="display:none;">
+        <input type="text" name="DungeonID" value="@Model.DungeonID" />
+    </div>
+    <div>
+        <label>Dungeon Name:</label> <input type="text" name="DungeonName" value="@Model.DungeonName" />
+    </div>
+    <div>
+        <label>Dungeon Location:</label> <input type="text" name="DungeonLocation" value="@Model.DungeonLocation" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Dungeon" />
+
+    </div>
+</form>

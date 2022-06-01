@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GameApplication.Models.RaceDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Race/New">New Race</a>
+@foreach (var Race in Model)
+{
+    <h2><a href="/Race/Details/@Race.RaceID">@Race.RaceName</a></h2>
+    <div>Offensive: @Race.RaceOffensive</div>
+}

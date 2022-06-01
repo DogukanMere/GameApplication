@@ -1,0 +1,29 @@
+﻿@model IEnumerable<GameApplication.Models.RaceDto>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Creature</h2>
+<form action="/Creature/Create" method="POST">
+    <div>
+        <label>Name:</label> <input type="text" name="CreatureName" />
+    </div>
+    <div>
+        <label>Power:</label> <input type="number" name="CreaturePower" />
+    </div>
+    <div>
+        <label>Race:</label>
+        <select name="RaceID">
+            @foreach (var race in Model)
+            {
+                <option value="@race.RaceID">@race.RaceName</option>
+
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add Creature" />
+
+    </div>
+</form>
