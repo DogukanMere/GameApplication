@@ -22,6 +22,7 @@ namespace GameApplication.Controllers
             client.BaseAddress = new Uri("https://localhost:44348/api/");
         }
 
+
         // GET: Creature/List
         public ActionResult List()
         {

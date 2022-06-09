@@ -87,3 +87,11 @@ h1, h2 {
 .navbar-brand {
     color: #f5bf2a!important;
 }
+
+input {
+    color: black;
+}
+
+select {
+    color: black!important;
+}

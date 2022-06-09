@@ -26,6 +26,7 @@
         <div class="col-md-6 col-sm-12">
             <div><p style="font-size:3rem; color:red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
             <div><p style="font-size: 3rem; color: red; margin-bottom: 4rem;">Race: @Model.SelectedCreature.RaceName</p></div>
+
             <h3>Dungeons having @Model.SelectedCreature.CreatureName:</h3>
             @foreach (var dungeon in Model.LiveinDungeons)
             {
