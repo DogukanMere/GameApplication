@@ -23,31 +23,56 @@
         <div><img style="display: block; max-width: 400px; border: 1rem solid #e6e4c1;" alt="@Model.SelectedCreature.CreatureName" src="@imageurl" /></div>
         
     </div>
-        <div class="col-md-6 col-sm-12">
+    <div class="col-md-6 col-sm-12">
+        @if (Model.SelectedCreature.CreaturePower >= 800)
+        {
+            <div><p style="font-size: 3rem; color: red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
+            <span style="color: #8a0f01; font-size: 2rem;"> &#9608 &#9608 &#9608 &#9608 &#9608 Deathly</span>
+        }
+        else if (Model.SelectedCreature.CreaturePower >= 500)
+        {
+            <div><p style="font-size: 3rem; color: red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
+            <span style="color: #ff1900; font-size: 2rem; "> &#9608 &#9608 &#9608 &#9608 Strong</span>
+        }
+        else if (Model.SelectedCreature.CreaturePower >= 300)
+        {
             <div><p style="font-size:3rem; color:red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
-            <div><p style="font-size: 3rem; color: red; margin-bottom: 4rem;">Race: @Model.SelectedCreature.RaceName</p></div>
+            <span style="color: #fc9208; font-size: 2rem; "> &#9608 &#9608 &#9608 Moderate</span>
+        }
+        else if (Model.SelectedCreature.CreaturePower >= 150)
+        {
+            <div><p style="font-size:3rem; color:red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
+            <span style="color: #bd9e02; font-size: 2rem; "> &#9608 &#9608 Dangerous</span>
+        }
+        else
+        {
+            <div><p style="font-size:3rem; color:red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
+            <span style="color: #fcd303; font-size: 2rem; "> &#9608 Weak</span>
+        }
 
-            <h3>Dungeons having @Model.SelectedCreature.CreatureName:</h3>
-            @foreach (var dungeon in Model.LiveinDungeons)
-            {
+        <div><p style="font-size: 3rem; color: red; margin-bottom: 4rem; margin-top: 2rem;">Race: @Model.SelectedCreature.RaceName</p></div>
 
-                <a href="/Dungeon/Details/@dungeon.DungeonID">@dungeon.DungeonName | @dungeon.DungeonLocation</a> <a style="color:#ab2020;" href="/Creature/Unassociate/@Model.SelectedCreature.CreatureID?DungeonID=@dungeon.DungeonID">[x]</a><br />
-            }
+        <h3>Dungeons having @Model.SelectedCreature.CreatureName:</h3>
+        @foreach (var dungeon in Model.LiveinDungeons)
+        {
 
-            <div>
+            <a href="/Dungeon/Details/@dungeon.DungeonID">@dungeon.DungeonName | @dungeon.DungeonLocation</a> <a style="color:#ab2020;" href="/Creature/Unassociate/@Model.SelectedCreature.CreatureID?DungeonID=@dungeon.DungeonID">[x]</a><br />
+        }
 
-                <form method="POST" action="/Creature/Associate/@Model.SelectedCreature.CreatureID">
-                    <select style="color:black; margin:1.5rem 0;" name="DungeonID">
-                        <option value="">Select Dungeon</option>
-                        @foreach (var dungeon in Model.AvailableDungeons)
-                        {
-                            <option style="color:black;" value="@dungeon.DungeonID">@dungeon.DungeonName | @dungeon.DungeonLocation</option>
-                        }
+        <div>
 
-                    </select>
-                    <input type="submit" value="Add Dungeon" class="button"/>
-                </form>
-            </div>
+            <form method="POST" action="/Creature/Associate/@Model.SelectedCreature.CreatureID">
+                <select style="color:black; margin:1.5rem 0;" name="DungeonID">
+                    <option value="">Select Dungeon</option>
+                    @foreach (var dungeon in Model.AvailableDungeons)
+                    {
+                        <option style="color:black;" value="@dungeon.DungeonID">@dungeon.DungeonName | @dungeon.DungeonLocation</option>
+                    }
+
+                </select>
+                <input type="submit" value="Add Dungeon" class="button" />
+            </form>
         </div>
+    </div>
 
 </div>
