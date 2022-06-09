@@ -14,6 +14,10 @@ namespace GameApplication.Models
         public string CreatureName { get; set; }
         public int CreaturePower { get; set; }
 
+        //Image Data
+        public bool CreatureHasPic { get; set; }
+        public string PicExtension { get; set; }
+
         //Todo - Race
         //A Creature belongs to one race
         //Many Creatures can have same race
@@ -33,6 +37,11 @@ namespace GameApplication.Models
         public int CreaturePower { get; set; }
         public int RaceID { get; set; }
         public string RaceName { get; set; }
+
+        //Image
+        //Deposited into /Content/Images/Creatures/{id}/{extension}
+        public bool CreatureHasPic { get; set; }
+        public string PicExtension { get; set; }
     }
 
 }

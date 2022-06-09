@@ -226,6 +226,8 @@ namespace GameApplication.Controllers
             }
 
             db.Entry(creature).State = EntityState.Modified;
+            db.Entry(creature).Property(a => a.creatureHasPic).IsModified = false;
+            db.Entry(creature).Property(a => a.PicExtension).IsModified = false;
 
             try
             {
@@ -364,10 +366,20 @@ namespace GameApplication.Controllers
         [HttpPost]
         public IHttpActionResult DeleteCreature(int id)
         {
-            Creature creature = db.Creatures.Find(id);
+            Creature creature= db.Creatures.Find(id);
             if (creature == null)
             {
                 return NotFound();
+            }
+
+            if (creature.CreatureHasPic && Creature.PicExtension != "")
+            {
+                //delete image from path
+                string path = HttpContext.Current.Server.MapPath("~/Content/Images/Creatures/" + id + "." + creature.PicExtension);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
             }
 
             db.Creatures.Remove(creature);
