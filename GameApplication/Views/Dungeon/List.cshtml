@@ -4,7 +4,7 @@
 }
 
 <h2>List</h2>
-<a href="/Dungeon/New">New Dungeon</a>
+<a href="/Dungeon/New" class="link_nav">New Dungeon</a>
 @foreach (var Dungeon in Model)
 {
     <h2><a href="/Dungeon/Details/@Dungeon.DungeonID">@Dungeon.DungeonName, @Dungeon.DungeonLocation</a></h2>

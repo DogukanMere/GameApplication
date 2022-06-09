@@ -4,11 +4,11 @@
     ViewBag.Title = "View";
 }
 
-<a href="/Dungeon/List">Go back to list</a>
+<a href="/Dungeon/List" class="link_nav">Go back to list</a>
 <br />
-<a href="/Dungeon/Edit/@Model.SelectedDungeon.DungeonID">Update</a>
+<a href="/Dungeon/Edit/@Model.SelectedDungeon.DungeonID" class="link_nav">Update</a>
 <br />
-<a style="color:#ab2020;" href="/Dungeon/DeleteConfirm/@Model.SelectedDungeon.DungeonID">Delete</a>
+<a style="color:#ab2020;" href="/Dungeon/DeleteConfirm/@Model.SelectedDungeon.DungeonID" class="link_nav">Delete</a>
 <h2>@Model.SelectedDungeon.DungeonName @Model.SelectedDungeon.DungeonLocation</h2>
 
 

@@ -3,35 +3,50 @@
     ViewBag.Title = "View";
 }
 
-<a href="/Creature/List">Go back to list</a>
-<br />
-<a href="/Creature/Edit/@Model.SelectedCreature.CreatureID">Update</a>
-<br />
-<a style="color:#ab2020;" href="/Creature/DeleteConfirm/@Model.SelectedCreature.CreatureID">Delete</a>
 <h2>@Model.SelectedCreature.CreatureName</h2>
-<div>power: @Model.SelectedCreature.CreaturePower</div>
-<div>race: @Model.SelectedCreature.RaceName</div>
-
-<div>
-    <h2>Dungeons having @Model.SelectedCreature.CreatureName:</h2>
-    @foreach (var dungeon in Model.LiveinDungeons)
-    {
-
-        <a href="/Dungeon/Details/@dungeon.DungeonID">@dungeon.DungeonName @dungeon.DungeonLocation</a> <a style="color:#ab2020;" href="/Creature/Unassociate/@Model.SelectedCreature.CreatureID?DungeonID=@dungeon.DungeonID">[x]</a><br />
-    }
-
-    <div>
-        <h4>Add new Dungeon to include @Model.SelectedCreature.CreatureName</h4>
-        <form method="POST" action="/Creature/Associate/@Model.SelectedCreature.CreatureID">
-            <select name="DungeonID">
-                @foreach (var dungeon in Model.AvailableDungeons)
-                {
-                    <option value="@dungeon.DungeonID">@dungeon.DungeonName @dungeon.DungeonLocation</option>
-                }
-
-            </select>
-            <input type="submit" value="Associate dungeon" />
-        </form>
+<nav style="margin:2rem 0;">
+    <ul>
+        <li><a href="/Creature/List" class="link_nav">Go back to list</a></li>
+        <li><a href="/Creature/Edit/@Model.SelectedCreature.CreatureID" class="link_nav">Update</a></li>
+        <li><a style="color:#ab2020;" href="/Creature/DeleteConfirm/@Model.SelectedCreature.CreatureID" class="link_nav">Delete</a></li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6 col-sm-12" style="display:inline;">
+        @{
+            string imageurl = "/Content/Images/Creatures/default.png";
+            if (Model.SelectedCreature.CreatureHasPic)
+            {
+                imageurl = "/Content/Images/Creatures/" + Model.SelectedCreature.CreatureID + "." + Model.SelectedCreature.PicExtension;
+            }
+        }
+        <div><img style="display: block; max-width: 400px; border: 1rem solid #e6e4c1;" alt="@Model.SelectedCreature.CreatureName" src="@imageurl" /></div>
+        
     </div>
+        <div class="col-md-6 col-sm-12">
+            <div><p style="font-size:3rem; color:red;">Power: @Model.SelectedCreature.CreaturePower</p></div>
+            <div><p style="font-size: 3rem; color: red; margin-bottom: 4rem;">Race: @Model.SelectedCreature.RaceName</p></div>
+            <h3>Dungeons having @Model.SelectedCreature.CreatureName:</h3>
+            @foreach (var dungeon in Model.LiveinDungeons)
+            {
+
+                <a href="/Dungeon/Details/@dungeon.DungeonID">@dungeon.DungeonName | @dungeon.DungeonLocation</a> <a style="color:#ab2020;" href="/Creature/Unassociate/@Model.SelectedCreature.CreatureID?DungeonID=@dungeon.DungeonID">[x]</a><br />
+            }
+
+            <div>
+
+                <form method="POST" action="/Creature/Associate/@Model.SelectedCreature.CreatureID">
+                    <select style="color:black; margin:1.5rem 0;" name="DungeonID">
+                        <option value="">Select Dungeon</option>
+                        @foreach (var dungeon in Model.AvailableDungeons)
+                        {
+                            <option style="color:black;" value="@dungeon.DungeonID">@dungeon.DungeonName | @dungeon.DungeonLocation</option>
+                        }
+
+                    </select>
+                    <input type="submit" value="Add Dungeon" class="button"/>
+                </form>
+            </div>
+        </div>
 
 </div>

@@ -40,6 +40,8 @@ namespace GameApplication.Controllers
                 CreatureID = c.CreatureID,
                 CreatureName = c.CreatureName,
                 CreaturePower = c.CreaturePower,
+                CreatureHasPic = c.CreatureHasPic,
+                PicExtension = c.PicExtension,
                 RaceID = c.Race.RaceID,
                 RaceName = c.Race.RaceName
             }));
@@ -190,6 +192,8 @@ namespace GameApplication.Controllers
                 CreatureID = Creature.CreatureID,
                 CreatureName = Creature.CreatureName,
                 CreaturePower = Creature.CreaturePower,
+                CreatureHasPic = Creature.CreatureHasPic,
+                PicExtension = Creature.PicExtension,
                 RaceID = Creature.Race.RaceID,
                 RaceName = Creature.Race.RaceName
             };
@@ -226,7 +230,7 @@ namespace GameApplication.Controllers
             }
 
             db.Entry(creature).State = EntityState.Modified;
-            db.Entry(creature).Property(a => a.creatureHasPic).IsModified = false;
+            db.Entry(creature).Property(a => a.CreatureHasPic).IsModified = false;
             db.Entry(creature).Property(a => a.PicExtension).IsModified = false;
 
             try
@@ -372,7 +376,7 @@ namespace GameApplication.Controllers
                 return NotFound();
             }
 
-            if (creature.CreatureHasPic && Creature.PicExtension != "")
+            if (creature.CreatureHasPic && creature.PicExtension != "")
             {
                 //delete image from path
                 string path = HttpContext.Current.Server.MapPath("~/Content/Images/Creatures/" + id + "." + creature.PicExtension);

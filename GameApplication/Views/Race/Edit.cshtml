@@ -5,7 +5,7 @@
 }
 
 <h2>Update Race</h2>
-<form action="/Race/Update/@Model.RaceID" method="POST">
+<form action="/Race/Update/@Model.RaceID" method="POST" class="add_form">
     <div style="display:none;"> 
         <input type="text" name="RaceID" value="@Model.RaceID" />
     </div>
@@ -18,7 +18,7 @@
                @(Model.RaceOffensive ? "checked" : "") />
     </div>
     <div>
-        <input type="submit" value="Update Race" />
+        <input type="submit" value="Update Race" class="button" />
 
     </div>
 </form>

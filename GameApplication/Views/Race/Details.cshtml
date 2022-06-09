@@ -5,11 +5,11 @@
     ViewBag.Title = "View";
 }
 
-<a href="/Race/List">Go back to list</a>
+<a href="/Race/List" class="link_nav">Go back to list</a>
 <br />
-<a href="/Race/Edit/@Model.SelectedRace.RaceID">Update</a>
+<a href="/Race/Edit/@Model.SelectedRace.RaceID" class="link_nav">Update</a>
 <br />
-<a style="color:#ab2020;" href="/Race/DeleteConfirm/@Model.SelectedRace.RaceID">Delete</a>
+<a style="color:#ab2020;" href="/Race/DeleteConfirm/@Model.SelectedRace.RaceID" class="link_nav">Delete</a>
 <h2>@Model.SelectedRace.RaceName</h2>
 <div>Endangered: @Model.SelectedRace.RaceOffensive</div>
 

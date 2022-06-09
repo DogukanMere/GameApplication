@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #222222;
+    color: #fff;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -26,5 +28,62 @@ textarea {
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
     background-color: #777;
-    border-color: #fff
+    border-color: #fff;
+}
+
+.space_top {
+    margin: 1rem 0;
+}
+
+
+.button {
+    padding: 0.3rem 1rem;
+    border: none;
+    background-color: #e6e4c1;
+    color: black;
+    border-radius: 1rem;
+    font-weight: 600;
+}
+
+a{
+    font-weight: 600;
+    color: #10f8f1;
+}
+
+.add_form {
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+
+.link_nav {
+    color: #f5bf2a;
+    margin: 1rem 0;
+    list-style: none;
+}
+
+li {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.navbar-nav li {
+    margin: 0;
+}
+
+.navbar-nav a {
+    color: #f5bf2a !important;
+}
+
+.center_div {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+h1, h2 {
+    color: #f5bf2a;
+}
+
+.navbar-brand {
+    color: #f5bf2a!important;
 }

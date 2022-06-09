@@ -213,6 +213,10 @@
     <Compile Include="Migrations\202205311420063_dungeon-creatures.designer.cs">
       <DependentUpon>202205311420063_dungeon-creatures.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206091526101_creaturepic.cs" />
+    <Compile Include="Migrations\202206091526101_creaturepic.designer.cs">
+      <DependentUpon>202206091526101_creaturepic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Creature.cs" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205311420063_dungeon-creatures.resx">
       <DependentUpon>202205311420063_dungeon-creatures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206091526101_creaturepic.resx">
+      <DependentUpon>202206091526101_creaturepic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

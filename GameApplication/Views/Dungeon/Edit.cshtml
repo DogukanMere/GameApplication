@@ -5,7 +5,7 @@
 }
 
 <h2>Update Dungeon</h2>
-<form action="/Dungeon/Update/@Model.DungeonID" method="POST">
+<form action="/Dungeon/Update/@Model.DungeonID" method="POST" class="add_form">
     <div style="display:none;">
         <input type="text" name="DungeonID" value="@Model.DungeonID" />
     </div>
@@ -17,7 +17,7 @@
     </div>
 
     <div>
-        <input type="submit" value="Update Dungeon" />
+        <input type="submit" value="Update Dungeon" class="button"/>
 
     </div>
 </form>
