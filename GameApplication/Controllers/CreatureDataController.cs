@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using GameApplication.Models;
 using System.Diagnostics;
+using System.Web;
+using System.IO;
 
 namespace GameApplication.Controllers
 {
@@ -241,6 +243,87 @@ namespace GameApplication.Controllers
                 }
             }
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        /// <summary>
+        /// Receives a creature pic. data, uploads the picture to the web server
+        /// </summary>
+        /// <param name="id">the creature id</param>
+        /// <example>
+        /// curl -F creaturelpic=@file.jpg "https://localhost:xx/api/creaturedata/uploadcreaturepic/2"
+        /// POST: api/creatureData/UpdatecreaturePic/3
+        /// HEADER: enctype=multipart/form-data
+        /// FORM-DATA: image
+        /// </example>
+        /// https://stackoverflow.com/questions/28369529/how-to-set-up-a-web-api-controller-for-multipart-form-data
+
+        [HttpPost]
+        public IHttpActionResult UploadCreaturePic(int id)
+        {
+
+            bool haspic = false;
+            string picextension;
+            if (Request.Content.IsMimeMultipartContent())
+            {
+                int numfiles = HttpContext.Current.Request.Files.Count;
+                //Debug.WriteLine("Files Received: " + numfiles);
+
+                //Check whether a file is posted
+                if (numfiles == 1 && HttpContext.Current.Request.Files[0] != null)
+                {
+                    var creaturePic = HttpContext.Current.Request.Files[0];
+                    //Check if it is empty
+                    if (creaturePic.ContentLength > 0)
+                    {
+                        //accepted file types
+                        var valtypes = new[] { "jpeg", "jpg", "png", "gif" };
+                        var extension = Path.GetExtension(creaturePic.FileName).Substring(1);
+                        //Check the file extension
+                        if (valtypes.Contains(extension))
+                        {
+                            try
+                            {
+                                //file name is the id of the image
+                                string fn = id + "." + extension;
+
+                                //get a direct file path to ~/Content/creatures/{id}.{extension}
+                                string path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/Creatures/"), fn);
+
+                                //save the file
+                                creaturePic.SaveAs(path);
+
+                                //if these are all successful then we can set these fields
+                                haspic = true;
+                                picextension = extension;
+
+                                //Update the creature haspic and picextension fields in the database
+                                Creature Selectedcreature = db.Creatures.Find(id);
+                                Selectedcreature.CreatureHasPic = haspic;
+                                Selectedcreature.PicExtension = extension;
+                                db.Entry(Selectedcreature).State = EntityState.Modified;
+
+                                db.SaveChanges();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("Creature Image was not saved successfully.");
+                                Debug.WriteLine("Exception:" + ex);
+                                return BadRequest();
+                            }
+                        }
+                    }
+
+                }
+
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+
+            }
+
         }
 
         /// <summary>

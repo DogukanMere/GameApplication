@@ -5,7 +5,7 @@
 }
 
 <h2>Update Creature</h2>
-<form action="/Creature/Update/@Model.SelectedCreature.CreatureID" method="POST">
+<form action="/Creature/Update/@Model.SelectedCreature.CreatureID" method="POST" enctype="multipart/form-data">
     <div style="display:none;">
         <input type="text" name="CreatureID" value="@Model.SelectedCreature.CreatureID" />
     </div>
@@ -30,6 +30,9 @@
 
             }
         </select>
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <input type="file" name="CreaturePic" />
     </div>
     <div>
         <input type="submit" value="Update Creature" />

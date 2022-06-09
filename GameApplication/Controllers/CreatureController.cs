@@ -25,7 +25,7 @@ namespace GameApplication.Controllers
         // GET: Creature/List
         public ActionResult List()
         {
-            //Communicate with creature data api to retrieve a list of creatures.
+            //Communicate with creature data api to retrieve a list of creatures
             //curl https://localhost:44348/api/creaturedata/listcreatures
 
             string url = "creaturedata/listcreatures";
@@ -167,7 +167,7 @@ namespace GameApplication.Controllers
 
         // POST: Creature/Update/5
         [HttpPost]
-        public ActionResult Update(int id, Creature creature)
+        public ActionResult Update(int id, Creature creature, HttpPostedFileBase CreaturePic)
         {
 
             string url = "creaturedata/updatecreature/" + id;
@@ -175,8 +175,22 @@ namespace GameApplication.Controllers
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
-            Debug.WriteLine(content);
-            if (response.IsSuccessStatusCode)
+            //Debug.WriteLine(content);
+
+            //update request logic
+            if (response.IsSuccessStatusCode && CreaturePic != null)
+            {
+                //Sending image data
+                url = "CreatureData/UploadCreaturePic/" + id;
+
+                MultipartFormDataContent requestcontent = new MultipartFormDataContent();
+                HttpContent imagecontent = new StreamContent(CreaturePic.InputStream);
+                requestcontent.Add(imagecontent, "CreaturePic", CreaturePic.FileName);
+                response = client.PostAsync(url, requestcontent).Result;
+
+                return RedirectToAction("List");
+            }
+            else if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");
             }
