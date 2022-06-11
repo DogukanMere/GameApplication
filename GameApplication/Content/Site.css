@@ -1,8 +1,11 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&family=Metal+Mania&display=swap');
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #222222;
     color: #fff;
+    font-family: 'IM Fell English', serif !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -45,7 +48,12 @@ textarea {
     font-weight: 600;
 }
 
-a{
+.btn-default {
+    background-color: #f5bf2a;
+    border: none;
+}
+
+a {
     font-weight: 600;
     color: #10f8f1;
 }
@@ -82,6 +90,7 @@ li {
 
 h1, h2 {
     color: #f5bf2a;
+    font-family: 'Metal Mania', cursive;
 }
 
 .navbar-brand {
@@ -94,4 +103,13 @@ input {
 
 select {
     color: black!important;
+}
+
+.race_list small {
+    font-size:1.7rem;
+    display: inline;
+}
+
+.creature_list small {
+    font-size: 1.7rem;
 }

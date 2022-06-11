@@ -2,12 +2,16 @@
 @{
     ViewBag.Title = "List";
 }
-
 <h2>List</h2>
 <a href="/Creature/New" class="link_nav">New Creature</a>
-@foreach (var creature in Model)
-{
-    <h2><a href="/Creature/Details/@creature.CreatureID">@creature.CreatureName</a></h2>
-    <div>Power: @creature.CreaturePower</div>
-    <div>Race: @creature.RaceName</div>
-}
+<div style="display:flex; flex-wrap: wrap; flex-direction:column; width: 60rem; height:60rem;" class="creature_list">
+        @foreach (var creature in Model)
+        {
+            <div style="display:flex; flex-direction:column; width:15rem;">
+                <h2><a href="/Creature/Details/@creature.CreatureID">@creature.CreatureName</a></h2>
+                <div><small>Power: @creature.CreaturePower</small></div>
+                <div><small>Race: @creature.RaceName</small></div>
+            </div>
+        }
+    
+</div>
