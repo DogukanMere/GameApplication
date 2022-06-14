@@ -22,18 +22,18 @@
 - Creatures can reside in multiple dungeons
 
 ### Features:
-**Creature:**
+- Creature
 1. After adding a new creature, you can upload an image representing the creature (Admin only)
 2. A creature can be assign to more than a dungeon or remove from any dungeon. (Admin only)
 3. When a new creature added, you can choose listed races which are in the system already (Admin only)
 3. Based on creature powers, a bar will appear under power rate which represents how dangerous the creature is.
 4. It is possible to determine the race each creature belongs to.
 
-**Race:**
+- Race
 1. If you visit a race, you can check which creatures belong to that specific race.
 2. You can check if a race is offensive or not which is given with green and red color. While green is showing that a race is inoffensive, red does opposite.
 
-**Dungeon:**
+- Dungeon
 1. When you visit a specific dungeon, you can see which creatures might be encountered in that dungeon which will let users to find any creature easily.
 2. Each dungeon has location information, so users know where to find the entrance for all dungeons.
 
