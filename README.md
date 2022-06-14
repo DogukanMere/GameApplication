@@ -7,20 +7,19 @@
 - Verify that the project contains an App Data folder => right-click solution => View in File Explorer
 - Tools => Nuget Package Manager => Package Manage Console => type: Update-Database
 - Make sure the database was created: go through steps [View => SQL Server Object Explorer => MSSQLLocalDb => and relevant database]
-
+---
 ### Main Components:
-**This is my passion project, and it was influenced by video games in general.**
-**For this project, there are three sections.**
+**This is my passion project, and it was influenced by video games in general. For this project, I created 3 sections:**
 1. Creatures
 2. Races
 3. Dungeons
-
+---
 ### Logic:
 - Each creature is a member of a race
 - Many creatures can share the same race
 - Dungeons can contain a variety of monsters
 - Creatures can reside in multiple dungeons
-
+---
 ### Features:
 - Creature
 1. After adding a new creature, you can upload an image representing the creature (Admin only)
@@ -36,9 +35,9 @@
 - Dungeon
 1. When you visit a specific dungeon, you can see which creatures might be encountered in that dungeon which will let users to find any creature easily.
 2. Each dungeon has location information, so users know where to find the entrance for all dungeons.
-
+---
 ### Admin Features:
-**CRUD(create, read, delete, update) functionality is applied to this project to be able to manage all content**
+CRUD(create, read, delete, update) functionality is applied to this project to be able to manage all content
 
 **Adding a race, dungeon, creature:**
 - Once you are on "Races"|"Dungeons" or "Creature" tab, you can add a new race|dungeon|creature simply clicking "New (Race | Dungeon | Creature)"
