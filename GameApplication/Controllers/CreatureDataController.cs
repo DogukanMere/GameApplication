@@ -173,7 +173,7 @@ namespace GameApplication.Controllers
         }
 
         /// <summary>
-        /// Returns all creatures in the system.
+        /// Returns a specific creature by its id
         /// </summary>
         /// <returns>
         /// Content: A creature in the system matching up to the creature ID primary key
