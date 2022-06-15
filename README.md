@@ -17,7 +17,7 @@
 ### Logic:
 - Each creature is a member of a race
 - Many creatures can share the same race
-- Dungeons can contain a variety of monsters
+- Dungeons can contain a variety of creatures
 - Creatures can reside in multiple dungeons
 ---
 ### Features:
